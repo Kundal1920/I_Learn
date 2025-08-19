@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Document Metadata and Basic Settings -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I Learn Educational Academy</title>
+
+    <!-- External CSS Libraries -->
+    <!-- Tailwind CSS is a utility-first framework for modern styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts are used to provide custom, professional-looking fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Roboto:wght@300;400&family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- Custom Styles for this Page -->
+    <style>
+        /* General body styles for the entire page */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Open Sans', sans-serif; /* Sets the default font for body text */
+            background: linear-gradient(135deg, #f0f4f8 0%, #d9e2ec 100%); /* Creates a soft gradient background */
+            color: #333; /* Sets a dark gray color for most text */
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased; /* Improves font rendering on webkit browsers */
+            -moz-osx-smoothing: grayscale; /* Improves font rendering on Firefox */
+            overflow-x: hidden; /* Prevents horizontal scrollbars */
+        }
+
+        /* Styling for the main academy heading with a special gradient effect */
+        .heading-container {
+            background: linear-gradient(45deg, #60a5fa, #818cf8); /* A beautiful blue-to-purple gradient */
+            -webkit-background-clip: text; /* Clips the background to the shape of the text */
+            -webkit-text-fill-color: transparent; /* Makes the text transparent so the gradient shows through */
+            animation: gradient-shift 5s ease infinite alternate; /* Animates the gradient position */
+        }
+        
+        /* Defines the animation for the gradient to shift smoothly */
+        @keyframes gradient-shift {
+            0% { background-position: 0% 50%; } /* Starting position of the gradient */
+            100% { background-position: 100% 50%; } /* Ending position of the gradient */
+        }
+
+        /* Styles for the container holding all the service cards */
+        .services-page-container {
+            max-width: 1200px;
+            margin: 80px auto; /* Centers the container and adds vertical space */
+            padding: 40px;
+            background-color: #ffffff; /* White background for the services section */
+            border-radius: 20px;
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.15); /* Adds a soft, deep shadow */
+            box-sizing: border-box;
+            border: 1px solid rgba(220, 220, 220, 0.5);
+        }
+
+        /* Styles for the "Our Services" heading */
+        .services-page-container h1 {
+            font-family: 'Montserrat', sans-serif;
+            text-align: center;
+            color: #2c3e50;
+            font-size: 3.5em;
+            margin-bottom: 60px;
+            font-weight: 700;
+            position: relative;
+            padding-bottom: 25px;
+            letter-spacing: -0.8px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.05);
+        }
+
+        /* Creates the colored underline for the "Our Services" heading */
+        .services-page-container h1::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 6px;
+            background: linear-gradient(to right, #6a82fb, #fc5c7d);
+            border-radius: 3px;
+        }
+
+        /* Master Card Styling */
+        .master-card {
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(230, 230, 230, 0.7);
+            position: relative; /* Ensure relative positioning for the emoji */
+        }
+
+        .master-card h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2em;
+            font-weight: 600;
+            color: #34495e;
+            margin-bottom: 20px;
+        }
+
+        .master-card p, .master-card ul {
+            font-family: 'Open Sans', sans-serif;
+            color: #6c757d;
+            font-size: 1.1em;
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+
+        .master-card ul {
+            list-style-type: disc;
+            padding-left: 20px;
+            margin-top: 10px;
+        }
+
+        .master-card li {
+            margin-bottom: 8px;
+        }
+
+        .enroll-button {
+            display: inline-block;
+            align-self: center; /* Center the button within the flex container */
+            margin-top: 30px;
+            color: #ffffff;
+            padding: 14px 35px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.15em;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease, filter 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+            background: linear-gradient(45deg, #4CAF50, #81C784);
+        }
+
+        .enroll-button:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+            filter: brightness(1.1);
+        }
+
+        @media (max-width: 768px) {
+            .services-page-container { margin: 20px auto; padding: 15px; border-radius: 0; box-shadow: none; border: none; }
+            .services-page-container h1 { font-size: 2.2em; margin-bottom: 30px; padding-bottom: 15px; }
+            .services-page-container h1::after { width: 80px; height: 4px; }
+            .master-card { padding: 30px; }
+            .master-card h2 { font-size: 1.7em; }
+            .master-card p { font-size: 0.95em; }
+            .enroll-button { padding: 12px 30px; font-size: 1.05em; }
+        }
+
+        .animated-emoji {
+            display: inline-block;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+        
+        .cap-emoji {
+            position: absolute;
+            top: -24px;
+            right: 24px;
+            background-color: #3b82f6;
+            border-radius: 9999px;
+            height: 48px;
+            width: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+        }
+
+        .cap-emoji span {
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen flex-col p-4">
+
+    <!-- I LEARN ACADEMY Heading Section -->
+    <div class="text-center mb-12">
+        <h1 class="text-6xl md:text-8xl font-extrabold tracking-tight heading-container font-poppins">
+            I Learn Educational Academy
+        </h1>
+        <p class="mt-4 text-lg md:text-xl font-light text-gray-500">
+            SAMBA (Jammu and Kashmir)
+        </p>
+        <p class="mt-4 text-lg md:text-xl font-light text-gray-500">
+            Your journey to knowledge begins here.
+        </p>
+    </div>
+
+    <!-- Master Card Section -->
+    <div class="services-page-container">
+        <h1>Our Courses & Enrollment Process</h1>
+
+        <div class="master-card">
+            <!-- Graduation Cap Emoji on the top-right -->
+            <div class="cap-emoji">
+                <span>🎓</span>
+            </div>
+
+            <h2 class="text-center mb-4 text-gray-800">Enrollment Made Simple</h2>
+            <p>Welcome to our academy! We provide opportunities for both career growth and entrepreneurship. To get started, follow the simple steps below:</p>
+
+            <ol class="list-decimal list-inside text-gray-700 font-semibold mb-6 space-y-2">
+                <li><span class="font-normal">Go below and click the <strong class="text-blue-600">"Enroll Now"</strong> button.</span></li>
+                <li><span class="font-normal">Select your desired course.</span></li>
+                <li><span class="font-normal">You will be redirected to our WhatsApp group. Join the group and follow the admission process.</span></li>
+            </ol>
+            
+            <p class="text-center mt-6 mb-4 text-xl font-bold">What We Offer</p>
+
+            <div class="space-y-6">
+                <h3 class="text-2xl font-bold text-gray-700">For Professional & Online Courses</h3>
+                <ul class="text-gray-600 space-y-2">
+                    <li><strong class="text-blue-600">Online Mentor Support:</strong> An expert mentor is available to guide you.</li>
+                    <li><strong class="text-blue-600">Study Material:</strong> Study materials are provided online.</li>
+                    <li><strong class="text-blue-600">On-Demand Books:</strong> Books are also provided on demand.</li>
+                </ul>
+            </div>
+
+            <div class="mt-6 space-y-6">
+                <h3 class="text-2xl font-bold text-gray-700">For Vocational Courses</h3>
+                <ul class="text-gray-600 space-y-2">
+                    <li><strong class="text-blue-600">Practical Training:</strong> 1-10 days of practical training is available.</li>
+                    <li><strong class="text-blue-600">Booking Slots:</strong> Practical training is provided by booking a slot after module completion.</li>
+                    <li><strong class="text-blue-600">For Professionals:</strong> Offline practical skills training is also available.</li>
+                </ul>
+            </div>
+            
+            <div class="mt-6 space-y-6">
+                <h3 class="text-2xl font-bold text-gray-700">For Teacher Training</h3>
+                <ul class="text-gray-600 space-y-2">
+                    <li><strong class="text-blue-600">Training Duration:</strong> 1 to 24 months of training is available as needed.</li>
+                    <li><strong class="text-blue-600">Modules:</strong> Training is available offline with modules.</li>
+                </ul>
+            </div>
+
+            <div class="text-center">
+                <a href="https://sites.google.com/view/ilearnin/professional-courses" class="enroll-button animated-emoji">Enroll Now ➡️</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Information Section -->
+    <div class="w-full max-w-2xl mx-auto mt-12 mb-8 p-6 bg-gray-800 text-white rounded-lg shadow-xl text-center">
+        <h2 class="text-2xl font-bold mb-4">Contact Information</h2>
+        <p class="text-lg"><strong>Admin:</strong> Kapil Kundal <br>Megha Verma <br></p>
+        <p class="text-lg"><strong>Mobile:</strong> 9797031211</p>
+        <p class="text-lg"><strong>Email:</strong> kundal1920@gmail.com</p>
+        <p class="text-lg"><strong>Address:</strong> Samba, Jammu and Kashmir</p>
+    </div>
+
+    <!-- No JavaScript is needed for this static content, so the script tag is removed. -->
+</body>
+</html>
